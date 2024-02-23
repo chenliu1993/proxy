@@ -1,2 +1,4 @@
 # proxy
-a simple prroxy that transfers http, tcp and udp
+a simple proxy that transfers http, tcp and udp packets
+### usage
+
