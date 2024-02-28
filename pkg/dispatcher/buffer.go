@@ -3,9 +3,8 @@ package dispatcher
 import (
 	"sync"
 )
-
 type buffer struct {
-	lock  sync.RWMutex
+	m sync.RWMutex
 	data  []interface{}
 	avail int
 	cap   int
@@ -20,8 +19,8 @@ func NewBuffer(n int) *buffer {
 }
 
 func (b *buffer) ReadOne() interface{} {
-	b.lock.RLock()
-	defer b.lock.RUnlock()
+	b.m.RLock()
+	defer b.m.RUnlock()
 
 	if b.avail == 0 {
 		return nil
@@ -36,9 +35,8 @@ func (b *buffer) ReadOne() interface{} {
 }
 
 func (b *buffer) WriteOne(data interface{}) {
-	b.lock.Lock()
-	defer b.lock.Unlock()
-
+	b.m.Lock()
+	defer b.m.Unlock()
 	if b.avail < b.cap {
 		b.data[b.avail] = data
 		b.avail++
