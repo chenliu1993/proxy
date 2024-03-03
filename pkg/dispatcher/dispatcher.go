@@ -38,7 +38,7 @@ func (d *Dispatcher) Register(handler func(interface{})) {
 
 func (d *Dispatcher) Run() {
 	for i := 0; i < len(d.procs); i++ {
-		fmt.Printf("process %d is running\n", i)
+		fmt.Printf("process %d is running with buffer size %d\n", i, d.procs[i].cache.cap)
 		go d.procs[i].run()
 	}
 }
@@ -46,7 +46,7 @@ func (d *Dispatcher) Run() {
 func (d *Dispatcher) Put(data interface{}) {
 	for {
 		id := rand.Intn(len(d.procs))
-		fmt.Printf("process %d is executing the job\n", id)
+		fmt.Printf("process %d is executing the job, the content is %v\n", id, data)
 		d.procs[id].inCh <- data
 		return
 	}

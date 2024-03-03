@@ -3,8 +3,9 @@ package dispatcher
 import (
 	"sync"
 )
+
 type buffer struct {
-	m sync.RWMutex
+	m     sync.RWMutex
 	data  []interface{}
 	avail int
 	cap   int

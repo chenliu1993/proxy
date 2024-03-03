@@ -1,4 +1,4 @@
-# proxy
-a simple proxy that transfers http, tcp and udp packets
+# resent
+a simple tool that transfers tcp and udp packets' body
 ### usage
 

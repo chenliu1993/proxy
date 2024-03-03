@@ -1,0 +1,6 @@
+bufSizePerProc: 2
+numOfProcs: 1
+tcpConns:
+udpConns:
+  - srcAddr: "127.0.0.1:8100"
+    dstAddr: "127.0.0.1:8090"
